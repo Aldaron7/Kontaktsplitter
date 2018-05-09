@@ -47,7 +47,6 @@ public class TitelRepository implements IRepository<Titel>
 
     private TitelRepository()
     {
-        this.load();
     }
 
     public void load()

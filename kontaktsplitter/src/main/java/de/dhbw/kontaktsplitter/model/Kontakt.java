@@ -2,11 +2,14 @@ package de.dhbw.kontaktsplitter.model;
 
 import java.rmi.server.UID;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import de.dhbw.kontaktsplitter.repository.AnredeRepository;
+import de.dhbw.kontaktsplitter.repository.GrussformelRepository;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleListProperty;
@@ -14,21 +17,28 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Kontakt
 {
-    private UID                         uid;
-    private StringProperty              input       = new SimpleStringProperty();
-    private StringProperty              vorname     = new SimpleStringProperty();
-    private StringProperty              nachname    = new SimpleStringProperty();
-    private ObjectProperty<Anrede>      anrede      = new SimpleObjectProperty<>();
-    private ListProperty<Titel>         titel       = new SimpleListProperty<>();
-    private ObjectProperty<Geschlecht>  geschlecht  = new SimpleObjectProperty<>();
-    private ObjectProperty<Land>        land        = new SimpleObjectProperty<>();
-    private ObjectProperty<Grussformel> grussformel = new SimpleObjectProperty<>();
-    private StringProperty              briefanrede = new SimpleStringProperty();
+    private UID                        uid;
+    private StringProperty             input       = new SimpleStringProperty();
+    private StringProperty             vorname     = new SimpleStringProperty();
+    private StringProperty             nachname    = new SimpleStringProperty();
+    private StringProperty             anrede      = new SimpleStringProperty();
+    private ListProperty<String>       titel       = new SimpleListProperty<>();
+    private ObjectProperty<Geschlecht> geschlecht  = new SimpleObjectProperty<>();
+    private ObjectProperty<Land>       land        = new SimpleObjectProperty<>();
+    private StringProperty             grussformel = new SimpleStringProperty();
+    private StringProperty             briefanrede = new SimpleStringProperty();
+
+    public Kontakt()
+    {
+        this.uid = new UID();
+        this.titel.set(FXCollections.observableArrayList(new ArrayList<>()));
+    }
 
     public Kontakt(String nachname)
     {
@@ -37,134 +47,236 @@ public class Kontakt
         this.titel.set(FXCollections.observableArrayList(new ArrayList<>()));
     }
 
+    public void generateBriefanrede()
+    {
+        this.setDefaultKennung();
+        if (this.getGrussformel() == null)
+        {
+            this.generateGrussformel();
+        }
+        if (this.getAnrede() == null)
+        {
+            this.generateAnrede();
+        }
+
+        StringBuilder sb = new StringBuilder();
+        if (this.getGrussformel() != null && this.getAnrede() != null)
+        {
+            sb.append(this.getGrussformel()).append(" ").append(this.getAnrede()).append(" ");
+            if (this.getGeschlecht() != Geschlecht.NONE)
+            {
+                for (String t : this.titel)
+                {
+                    sb.append(t).append(" ");
+                }
+            }
+        }
+        this.setBriefanrede(sb.toString().trim());
+    }
+
+    public void generateAnrede()
+    {
+        AnredeRepository.instance().getValue(this.getLand(), this.getGeschlecht()).ifPresent(this::setAnrede);
+    }
+
+    public void generateGrussformel()
+    {
+        GrussformelRepository.instance().getValue(this.getLand(), this.getGeschlecht()).ifPresent(this::setGrussformel);
+    }
+
+    private void setDefaultKennung()
+    {
+        this.setLand(this.getLand() == null ? Land.DE : this.getLand());
+        this.setGeschlecht(this.getGeschlecht() == null ? Geschlecht.NONE : this.getGeschlecht());
+    }
+
     public UID getUid()
     {
         return this.uid;
     }
 
-    public final StringProperty inputProperty()
+    public StringProperty inputProperty()
     {
         return this.input;
     }
 
-    public final String getInput()
+    public String getInput()
     {
         return this.inputProperty().get();
     }
 
-    public final void setInput(final String input)
+    public void setInput(final String input)
     {
         this.inputProperty().set(input);
     }
 
-    public final StringProperty vornameProperty()
+    public StringProperty vornameProperty()
     {
         return this.vorname;
     }
 
-    public final String getVorname()
+    public String getVorname()
     {
         return this.vornameProperty().get();
     }
 
-    public final void setVorname(final String vorname)
+    public void setVorname(final String vorname)
     {
         this.vornameProperty().set(vorname);
     }
 
-    public final StringProperty nachnameProperty()
+    public StringProperty nachnameProperty()
     {
         return this.nachname;
     }
 
-    public final String getNachname()
+    public String getNachname()
     {
         return this.nachnameProperty().get();
     }
 
-    public final void setNachname(final String nachname)
+    public void setNachname(final String nachname)
     {
         this.nachnameProperty().set(nachname);
     }
 
-    public final ObjectProperty<Anrede> anredeProperty()
+    public StringProperty anredeProperty()
     {
         return this.anrede;
     }
 
-    public final Anrede getAnrede()
+    public String getAnrede()
     {
         return this.anredeProperty().get();
     }
 
-    public final void setAnrede(final Anrede anrede)
+    public void setAnrede(final String anrede)
     {
         this.anredeProperty().set(anrede);
     }
 
-    public final ListProperty<Titel> titelProperty()
+    public ListProperty<String> titelProperty()
     {
         return this.titel;
     }
 
-    public final ObjectProperty<Geschlecht> geschlechtProperty()
+    public ObservableList<String> getTitel()
+    {
+        return this.titelProperty().get();
+    }
+
+    public void setTitel(final List<String> titel)
+    {
+        this.titelProperty().set(FXCollections.observableArrayList(titel));
+    }
+
+    public ObjectProperty<Geschlecht> geschlechtProperty()
     {
         return this.geschlecht;
     }
 
-    public final Geschlecht getGeschlecht()
+    public Geschlecht getGeschlecht()
     {
         return this.geschlechtProperty().get();
     }
 
-    public final void setGeschlecht(final Geschlecht geschlecht)
+    public void setGeschlecht(final Geschlecht geschlecht)
     {
         this.geschlechtProperty().set(geschlecht);
     }
 
-    public final ObjectProperty<Land> landProperty()
+    public ObjectProperty<Land> landProperty()
     {
         return this.land;
     }
 
-    public final Land getLand()
+    public Land getLand()
     {
         return this.landProperty().get();
     }
 
-    public final void setLand(final Land land)
+    public void setLand(final Land land)
     {
         this.landProperty().set(land);
     }
 
-    public final ObjectProperty<Grussformel> grussformelProperty()
+    public StringProperty grussformelProperty()
     {
         return this.grussformel;
     }
 
-    public final Grussformel getGrussformel()
+    public String getGrussformel()
     {
         return this.grussformelProperty().get();
     }
 
-    public final void setGrussformel(final Grussformel grussformel)
+    public void setGrussformel(final String grussformel)
     {
         this.grussformelProperty().set(grussformel);
     }
 
-    public final StringProperty briefanredeProperty()
+    public StringProperty briefanredeProperty()
     {
         return this.briefanrede;
     }
 
-    public final String getBriefanrede()
+    public String getBriefanrede()
     {
         return this.briefanredeProperty().get();
     }
 
-    public final void setBriefanrede(final String briefanrede)
+    public void setBriefanrede(final String briefanrede)
     {
         this.briefanredeProperty().set(briefanrede);
+    }
+
+    @Override
+    public String toString()
+    {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Kontakt [");
+        // if (this.uid != null)
+        // {
+        // builder.append("uid=").append(this.uid).append(", ");
+        // }
+        if (this.input != null)
+        {
+            builder.append("input=").append(this.getInput()).append(", ");
+        }
+        if (this.vorname != null)
+        {
+            builder.append("vorname=").append(this.getVorname()).append(", ");
+        }
+        if (this.nachname != null)
+        {
+            builder.append("nachname=").append(this.getNachname()).append(", ");
+        }
+        if (this.anrede != null)
+        {
+            builder.append("anrede=").append(this.getAnrede()).append(", ");
+        }
+        if (this.titel != null)
+        {
+            builder.append("titel=").append(this.getTitel()).append(", ");
+        }
+        if (this.geschlecht != null)
+        {
+            builder.append("geschlecht=").append(this.getGeschlecht()).append(", ");
+        }
+        if (this.land != null)
+        {
+            builder.append("land=").append(this.getLand()).append(", ");
+        }
+        if (this.grussformel != null)
+        {
+            builder.append("grussformel=").append(this.getGrussformel()).append(", ");
+        }
+        if (this.briefanrede != null)
+        {
+            builder.append("briefanrede=").append(this.getBriefanrede());
+        }
+        builder.append("]");
+        return builder.toString();
     }
 
 }

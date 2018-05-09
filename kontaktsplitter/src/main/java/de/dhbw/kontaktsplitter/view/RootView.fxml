@@ -3,8 +3,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -57,12 +59,12 @@
                      </GridPane.margin>
                   </TextField>
                   <Label text="Anrede" />
-                  <TextField fx:id="vorname" prefHeight="50.0" prefWidth="200.0" promptText="Vorname" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="vorname" onAction="#handleKorrektur" prefHeight="50.0" prefWidth="200.0" promptText="Vorname" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="nachname" prefHeight="50.0" prefWidth="200.0" promptText="Nachname" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <TextField fx:id="nachname" onAction="#handleKorrektur" prefHeight="50.0" prefWidth="200.0" promptText="Nachname" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
@@ -82,10 +84,18 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </ChoiceBox>
-                  <ListView fx:id="titel" editable="true" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <ListView fx:id="titel" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#handleTitelToLeft" text="&lt;-" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleTitelToRight" text="-&gt;" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
                   </ListView>
                </children>
                <padding>
