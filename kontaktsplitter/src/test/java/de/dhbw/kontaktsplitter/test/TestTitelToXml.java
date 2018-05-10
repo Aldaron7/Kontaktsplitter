@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -18,14 +17,19 @@ import org.junit.Test;
 
 import de.dhbw.kontaktsplitter.repository.TitelGenerator;
 import de.dhbw.kontaktsplitter.repository.TitelRepository;
+import de.dhbw.kontaktsplitter.util.Pfade;
 
 public class TestTitelToXml
 {
     @Test
     public void testToXml() throws URISyntaxException
     {
-        Path path = Paths.get(ClassLoader.getSystemResource("titel.xml").toURI());
+        Path path = Pfade.TITEL;
+        // path = Paths.get("conf", "titel.xml");
+        // path = new File("conf/titel.xml").toPath();
+        // path = Paths.get(ClientFX.class.getResource("conf/titel.xml").toURI());
         System.out.println(path.toAbsolutePath());
+        System.out.println(path);
         this.readFile(path);
 
         // this.writeFile(path);
@@ -65,8 +69,6 @@ public class TestTitelToXml
         TitelRepository titel = null;
         try (BufferedReader reader = Files.newBufferedReader(path))
         {
-            // reader.lines().forEach(System.out::println);
-            // System.out.println();
             JAXBContext context = JAXBContext.newInstance(TitelRepository.class);
             System.out.println("jaxbContext is=" + context.toString());
             Unmarshaller um = context.createUnmarshaller();

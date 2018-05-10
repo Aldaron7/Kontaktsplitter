@@ -1,6 +1,5 @@
 package de.dhbw.kontaktsplitter;
 
-import de.dhbw.kontaktsplitter.view.RootController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -20,7 +19,6 @@ public class ClientFX extends Application
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ClientFX.class.getResource("view/RootView.fxml"));
         AnchorPane root = loader.load();
-        RootController controller = loader.getController();
 
         primaryStage.setTitle("Kontaktsplitter");
         primaryStage.setMinHeight(600);

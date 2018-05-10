@@ -3,9 +3,7 @@ package de.dhbw.kontaktsplitter.repository;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -26,6 +24,7 @@ import de.dhbw.kontaktsplitter.model.Kennung;
 import de.dhbw.kontaktsplitter.model.Land;
 import de.dhbw.kontaktsplitter.model.Titel;
 import de.dhbw.kontaktsplitter.model.interfaces.IRepository;
+import de.dhbw.kontaktsplitter.util.Pfade;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -51,15 +50,14 @@ public class TitelRepository implements IRepository<Titel>
 
     public void load()
     {
-
-        try (BufferedReader reader = Files.newBufferedReader(Paths.get(ClassLoader.getSystemResource("titel.xml").toURI())))
+        try (BufferedReader reader = Files.newBufferedReader(Pfade.TITEL))
         {
             JAXBContext context = JAXBContext.newInstance(TitelRepository.class);
             Unmarshaller um = context.createUnmarshaller();
             TitelRepository titelRepository = (TitelRepository) um.unmarshal(reader);
             this.titel = titelRepository.getData();
         }
-        catch (JAXBException | IOException | URISyntaxException e)
+        catch (JAXBException | IOException e)
         {
             e.printStackTrace();
         }
@@ -67,14 +65,14 @@ public class TitelRepository implements IRepository<Titel>
 
     public void save()
     {
-        try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(ClassLoader.getSystemResource("titel.xml").toURI())))
+        try (BufferedWriter writer = Files.newBufferedWriter(Pfade.TITEL))
         {
             JAXBContext context = JAXBContext.newInstance(TitelRepository.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             m.marshal(this, writer);
         }
-        catch (JAXBException | IOException | URISyntaxException e)
+        catch (JAXBException | IOException e)
         {
             e.printStackTrace();
         }
