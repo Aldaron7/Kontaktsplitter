@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import de.dhbw.kontaktsplitter.model.Geschlecht;
@@ -72,13 +71,13 @@ public abstract class Repository<E> implements IRepository<E>
     @Override
     public Collection<String> getValues()
     {
-        return this.data.values();
+        return this.data.values().stream().sorted((s1, s2) -> s2.compareTo(s1)).collect(Collectors.toList());
     }
 
-    public Set<Kennung> getKeySet()
-    {
-        return this.data.keySet();
-    }
+    // public Set<Kennung> getKeySet()
+    // {
+    // return this.data.keySet();
+    // }
 
     public Optional<String> getValue(Kennung kennung)
     {
@@ -97,10 +96,10 @@ public abstract class Repository<E> implements IRepository<E>
         return this.data.values().contains(value);
     }
 
-    public Optional<Kennung> getKennung(String value)
-    {
-        return this.data.keySet().stream().filter(kennung -> this.data.get(kennung).equals(value)).findAny();
-    }
+    // public Optional<Kennung> getKennung(String value)
+    // {
+    // return this.data.keySet().stream().filter(kennung -> this.data.get(kennung).equals(value)).findAny();
+    // }
 
     @Override
     public Optional<Land> getLand(String value)

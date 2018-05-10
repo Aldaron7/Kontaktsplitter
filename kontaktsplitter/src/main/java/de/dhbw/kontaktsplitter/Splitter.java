@@ -2,13 +2,17 @@ package de.dhbw.kontaktsplitter;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import de.dhbw.kontaktsplitter.model.Geschlecht;
 import de.dhbw.kontaktsplitter.model.Kontakt;
 import de.dhbw.kontaktsplitter.model.Land;
 import de.dhbw.kontaktsplitter.repository.AnredeRepository;
+import de.dhbw.kontaktsplitter.repository.NamenszusatzRepository;
 import de.dhbw.kontaktsplitter.repository.TitelRepository;
 
 public class Splitter
@@ -39,25 +43,35 @@ public class Splitter
 
     private boolean validateInput(String input)
     {
+        // TODO
         return true;
     }
 
     private List<String> recognizeTitel(String input)
     {
-        List<String> titel = new ArrayList<>();
+        List<String> titelListe = new ArrayList<>();
         TitelRepository titelRepo = TitelRepository.instance();
-        for (String t : titelRepo.getValues())
+        Iterator<String> iterator = titelRepo.getValues().stream().distinct().sorted((s1, s2) -> s2.compareTo(s1)).iterator();
+        StringBuilder regex = new StringBuilder("(");
+        while (iterator.hasNext())
         {
-            String regex = t;
-            int splitcount = input.split(regex).length;
-            for (int i = 0; i < splitcount - 1; i++)
+            regex.append(iterator.next().replaceAll("\\.", "\\\\."));
+            if (iterator.hasNext())
             {
-                titelRepo.getLand(t).ifPresent(this::setLand);
-                titelRepo.getGeschlecht(t).ifPresent(this::setGeschlecht);
-                titel.add(t);
+                regex.append("|");
             }
         }
-        return titel;
+        regex.append(")");
+        Pattern pattern = Pattern.compile(regex.toString());
+        Matcher matcher = pattern.matcher(input);
+        while (matcher.find())
+        {
+            String titel = matcher.group();
+            titelListe.add(titel);
+            titelRepo.getLand(titel).ifPresent(this::setLand);
+            titelRepo.getGeschlecht(titel).ifPresent(this::setGeschlecht);
+        }
+        return titelListe;
     }
 
     private Optional<String> recognizeAnrede(String input)
@@ -92,10 +106,27 @@ public class Splitter
         return Optional.of(sb.toString().trim());
     }
 
+    private Optional<String> recognizeNamenszusatz(String input)
+    {
+        for (String namenszusatz : NamenszusatzRepository.instance().getValues())
+        {
+            if (input.contains(namenszusatz))
+            {
+                return Optional.of(namenszusatz);
+            }
+        }
+        return Optional.empty();
+    }
+
     private Optional<String> recognizeNachname(String input)
     {
+        StringBuilder sb = new StringBuilder();
+        this.recognizeNamenszusatz(input).ifPresent(nz -> sb.append(nz).append(" "));
+
         String[] split = input.split("\\s");
-        return Optional.of(split[split.length - 1]);
+        sb.append(split[split.length - 1]);
+
+        return Optional.of(sb.toString());
     }
 
     private String removeAllTitel(String input)

@@ -20,7 +20,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import de.dhbw.kontaktsplitter.model.Geschlecht;
-import de.dhbw.kontaktsplitter.model.Kennung;
 import de.dhbw.kontaktsplitter.model.Land;
 import de.dhbw.kontaktsplitter.model.Titel;
 import de.dhbw.kontaktsplitter.model.interfaces.IRepository;
@@ -104,17 +103,19 @@ public class TitelRepository implements IRepository<Titel>
         return this.getData().stream().map(Titel::getValue).anyMatch(value::equals);
     }
 
-    public Optional<List<Kennung>> getKennung(String value)
-    {
-        List<Kennung> kennungen = this.getData().stream().filter(t -> t.getValue().equals(value)).map(Titel::getKennung).collect(Collectors.toList());
-        return kennungen.isEmpty() ? Optional.empty() : Optional.of(kennungen);
-    }
+    // public Optional<List<Kennung>> getKennung(String value)
+    // {
+    // List<Kennung> kennungen = this.getData().stream().filter(t ->
+    // t.getValue().equals(value)).map(Titel::getKennung).filter(k -> k != null)
+    // .collect(Collectors.toList());
+    // return kennungen.isEmpty() ? Optional.empty() : Optional.of(kennungen);
+    // }
 
     @Override
     public Optional<Land> getLand(String value)
     {
         List<Land> laender = this.getData().stream().filter(t -> t.getValue().equals(value)).map(t -> t.getKennung().getLand()).distinct()
-                        .collect(Collectors.toList());
+                        .filter(l -> l != null).collect(Collectors.toList());
         return laender.size() != 1 ? Optional.empty() : Optional.of(laender.get(0));
     }
 
@@ -122,14 +123,14 @@ public class TitelRepository implements IRepository<Titel>
     public Optional<Geschlecht> getGeschlecht(String value)
     {
         List<Geschlecht> geschlechter = this.getData().stream().filter(t -> t.getValue().equals(value)).map(t -> t.getKennung().getGeschlecht()).distinct()
-                        .collect(Collectors.toList());
+                        .filter(g -> g != null).collect(Collectors.toList());
         return geschlechter.size() != 1 ? Optional.empty() : Optional.of(geschlechter.get(0));
     }
 
     @Override
     public Collection<String> getValues()
     {
-        return this.getData().stream().map(Titel::getValue).collect(Collectors.toSet());
+        return this.getData().stream().map(Titel::getValue).distinct().sorted((s1, s2) -> s2.compareTo(s1)).collect(Collectors.toList());
     }
 
 }

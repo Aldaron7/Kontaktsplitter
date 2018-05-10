@@ -1,6 +1,5 @@
 package de.dhbw.kontaktsplitter.model;
 
-import java.rmi.server.UID;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +16,11 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 @XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class Kontakt
 {
-    private UID                        uid;
     private StringProperty             input       = new SimpleStringProperty();
     private StringProperty             vorname     = new SimpleStringProperty();
     private StringProperty             nachname    = new SimpleStringProperty();
@@ -36,13 +33,11 @@ public class Kontakt
 
     public Kontakt()
     {
-        this.uid = new UID();
         this.titel.set(FXCollections.observableArrayList(new ArrayList<>()));
     }
 
     public Kontakt(String nachname)
     {
-        this.uid = new UID();
         this.setNachname(nachname);
         this.titel.set(FXCollections.observableArrayList(new ArrayList<>()));
     }
@@ -88,11 +83,6 @@ public class Kontakt
     {
         this.setLand(this.getLand() == null ? Land.DE : this.getLand());
         this.setGeschlecht(this.getGeschlecht() == null ? Geschlecht.NONE : this.getGeschlecht());
-    }
-
-    public UID getUid()
-    {
-        return this.uid;
     }
 
     public StringProperty inputProperty()
@@ -160,7 +150,7 @@ public class Kontakt
         return this.titel;
     }
 
-    public ObservableList<String> getTitel()
+    public List<String> getTitel()
     {
         return this.titelProperty().get();
     }
@@ -235,10 +225,6 @@ public class Kontakt
     {
         StringBuilder builder = new StringBuilder();
         builder.append("Kontakt [");
-        // if (this.uid != null)
-        // {
-        // builder.append("uid=").append(this.uid).append(", ");
-        // }
         if (this.input != null)
         {
             builder.append("input=").append(this.getInput()).append(", ");
@@ -277,6 +263,111 @@ public class Kontakt
         }
         builder.append("]");
         return builder.toString();
+    }
+
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((this.getAnrede() == null) ? 0 : this.getAnrede().hashCode());
+        result = prime * result + ((this.getGeschlecht() == null) ? 0 : this.getGeschlecht().hashCode());
+        result = prime * result + ((this.getLand() == null) ? 0 : this.getLand().hashCode());
+        result = prime * result + ((this.getNachname() == null) ? 0 : this.getNachname().hashCode());
+        result = prime * result + ((this.getTitel() == null) ? 0 : this.getTitel().hashCode());
+        result = prime * result + ((this.getVorname() == null) ? 0 : this.getVorname().hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+        if (obj == null)
+        {
+            return false;
+        }
+        if (this.getClass() != obj.getClass())
+        {
+            return false;
+        }
+        Kontakt other = (Kontakt) obj;
+        if (this.getAnrede() == null)
+        {
+            if (other.getAnrede() != null)
+            {
+                return false;
+            }
+        }
+        else
+            if (!this.getAnrede().equals(other.getAnrede()))
+            {
+                return false;
+            }
+        if (this.getGeschlecht() == null)
+        {
+            if (other.getGeschlecht() != null)
+            {
+                return false;
+            }
+        }
+        else
+            if (!this.getGeschlecht().equals(other.getGeschlecht()))
+            {
+                return false;
+            }
+        if (this.getLand() == null)
+        {
+            if (other.getLand() != null)
+            {
+                return false;
+            }
+        }
+        else
+            if (!this.getLand().equals(other.getLand()))
+            {
+                return false;
+            }
+        if (this.getNachname() == null)
+        {
+            if (other.getNachname() != null)
+            {
+                return false;
+            }
+        }
+        else
+            if (!this.getNachname().equals(other.getNachname()))
+            {
+                return false;
+            }
+        if (this.getTitel() == null)
+        {
+            if (other.getTitel() != null)
+            {
+                return false;
+            }
+        }
+        else
+            if (!this.getTitel().equals(other.getTitel()))
+            {
+                return false;
+            }
+        if (this.getVorname() == null)
+        {
+            if (other.getVorname() != null)
+            {
+                return false;
+            }
+        }
+        else
+            if (!this.getVorname().equals(other.getVorname()))
+            {
+                return false;
+            }
+        return true;
     }
 
 }

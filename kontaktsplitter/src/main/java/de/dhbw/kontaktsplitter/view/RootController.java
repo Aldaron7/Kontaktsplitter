@@ -3,6 +3,7 @@ package de.dhbw.kontaktsplitter.view;
 import de.dhbw.kontaktsplitter.Splitter;
 import de.dhbw.kontaktsplitter.model.Geschlecht;
 import de.dhbw.kontaktsplitter.model.Kontakt;
+import de.dhbw.kontaktsplitter.model.Kontakte;
 import de.dhbw.kontaktsplitter.model.Land;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -69,7 +70,6 @@ public class RootController
     @FXML
     private void handleKorrektur()
     {
-        System.out.println("korrektur");
         this.kontakt.generateBriefanrede();
     }
 
@@ -103,14 +103,16 @@ public class RootController
     @FXML
     private void handleSpeichern()
     {
-        System.out.println("speichern");
+        Kontakte kontakte = new Kontakte();
+        kontakte.load();
+        kontakte.add(this.kontakt);
+        kontakte.save();
     }
 
     private <T> void bind(Kontakt k)
     {
         Bindings.bindBidirectional(this.eingabe.textProperty(), k.inputProperty());
         Bindings.bindBidirectional(this.anrede.textProperty(), k.anredeProperty());
-        // TODO
         Bindings.bindBidirectional(this.titel.itemsProperty(), k.titelProperty());
         Bindings.bindBidirectional(this.vorname.textProperty(), k.vornameProperty());
         Bindings.bindBidirectional(this.nachname.textProperty(), k.nachnameProperty());
@@ -123,7 +125,6 @@ public class RootController
     {
         Bindings.unbindBidirectional(this.eingabe.textProperty(), k.inputProperty());
         Bindings.unbindBidirectional(this.anrede.textProperty(), k.anredeProperty());
-        // TODO
         Bindings.unbindBidirectional(this.titel.itemsProperty(), k.titelProperty());
         Bindings.unbindBidirectional(this.vorname.textProperty(), k.vornameProperty());
         Bindings.unbindBidirectional(this.nachname.textProperty(), k.nachnameProperty());

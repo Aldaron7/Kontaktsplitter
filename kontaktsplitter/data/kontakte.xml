@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kontakte>
+    <kontakt>
+        <anrede>Frau</anrede>
+        <briefanrede>Sehr geehrte Frau</briefanrede>
+        <geschlecht>FEMALE</geschlecht>
+        <grussformel>Sehr geehrte</grussformel>
+        <input>Frau Sandra Berger</input>
+        <land>DE</land>
+        <nachname>Berger</nachname>
+        <vorname>Sandra</vorname>
+    </kontakt>
+    <kontakt>
+        <anrede>Herr</anrede>
+        <briefanrede>Sehr geehrter Herr Dr.</briefanrede>
+        <geschlecht>MALE</geschlecht>
+        <grussformel>Sehr geehrter</grussformel>
+        <input>Herr Dr. Sandro Gutmensch</input>
+        <land>DE</land>
+        <nachname>Gutmensch</nachname>
+        <titel>Dr.</titel>
+        <vorname>Sandro</vorname>
+    </kontakt>
+    <kontakt>
+        <anrede>Herr</anrede>
+        <briefanrede>Sehr geehrter Herr Professor</briefanrede>
+        <geschlecht>MALE</geschlecht>
+        <grussformel>Sehr geehrter</grussformel>
+        <input>Professor Heinrich Freiherr vom Wald</input>
+        <land>DE</land>
+        <nachname>vom Wald</nachname>
+        <titel>Professor</titel>
+        <vorname>Heinrich Freiherr</vorname>
+    </kontakt>
+    <kontakt>
+        <anrede>Mrs</anrede>
+        <briefanrede>Dear Mrs</briefanrede>
+        <geschlecht>FEMALE</geschlecht>
+        <grussformel>Dear</grussformel>
+        <input>Mrs. Doreen Faber</input>
+        <land>EN</land>
+        <nachname>Faber</nachname>
+        <vorname>Doreen</vorname>
+    </kontakt>
+    <kontakt>
+        <anrede>Damen und Herren</anrede>
+        <briefanrede>Sehr geehrte Damen und Herren</briefanrede>
+        <geschlecht>NONE</geschlecht>
+        <grussformel>Sehr geehrte</grussformel>
+        <input>Mme. Charlotte Noir</input>
+        <land>DE</land>
+        <nachname>Noir</nachname>
+        <vorname>Mme. Charlotte</vorname>
+    </kontakt>
+    <kontakt>
+        <anrede>Damen und Herren</anrede>
+        <briefanrede>Sehr geehrte Damen und Herren</briefanrede>
+        <geschlecht>NONE</geschlecht>
+        <grussformel>Sehr geehrte</grussformel>
+        <input>Estobar y Gonzales</input>
+        <land>DE</land>
+        <nachname>Gonzales</nachname>
+        <vorname>Estobar</vorname>
+    </kontakt>
+    <kontakt>
+        <anrede>Frau</anrede>
+        <briefanrede>Sehr geehrte Frau Prof. Dr. rer. nat.</briefanrede>
+        <geschlecht>FEMALE</geschlecht>
+        <grussformel>Sehr geehrte</grussformel>
+        <input>Frau Prof. Dr. rer. nat. Maria von Leuthäuser-Schnarrenberger</input>
+        <land>DE</land>
+        <nachname>von Leuthäuser-Schnarrenberger</nachname>
+        <titel>Prof.</titel>
+        <titel>Dr. rer. nat.</titel>
+        <vorname>Maria</vorname>
+    </kontakt>
+    <kontakt>
+        <anrede>Herr</anrede>
+        <briefanrede>Sehr geehrter Herr Dipl. Ing.</briefanrede>
+        <geschlecht>MALE</geschlecht>
+        <grussformel>Sehr geehrter</grussformel>
+        <input>Herr Dipl. Ing. Max von Müller</input>
+        <land>DE</land>
+        <nachname>von Müller</nachname>
+        <titel>Dipl. Ing.</titel>
+        <vorname>Max</vorname>
+    </kontakt>
+    <kontakt>
+        <anrede>Damen und Herren</anrede>
+        <briefanrede>Sehr geehrte Damen und Herren</briefanrede>
+        <geschlecht>NONE</geschlecht>
+        <grussformel>Sehr geehrte</grussformel>
+        <input>Dr. Russwurm, Winfried</input>
+        <land>DE</land>
+        <nachname>Winfried</nachname>
+        <titel>Dr.</titel>
+        <vorname>Russwurm,</vorname>
+    </kontakt>
+    <kontakt>
+        <anrede>Herr</anrede>
+        <briefanrede>Sehr geehrter Herr Dr. Dr. rer. nat. Dr. h.c.</briefanrede>
+        <geschlecht>MALE</geschlecht>
+        <grussformel>Sehr geehrter</grussformel>
+        <input>Herr Dr.-Ing. Dr. rer. nat. Dr. h.c. mult. Paul Steffens</input>
+        <land>DE</land>
+        <nachname>Steffens</nachname>
+        <titel>Dr.</titel>
+        <titel>Dr. rer. nat.</titel>
+        <titel>Dr. h.c.</titel>
+        <vorname>Paul</vorname>
+    </kontakt>
+</kontakte>
