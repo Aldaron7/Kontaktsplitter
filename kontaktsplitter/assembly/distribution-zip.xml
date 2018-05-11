@@ -26,6 +26,9 @@
         <fileSet>
             <!--Get application resources-->
             <directory>data</directory>
+            <includes>
+            	<include>titel.xml</include>
+            </includes>
             <outputDirectory>data</outputDirectory>
         </fileSet>
         <fileSet>
