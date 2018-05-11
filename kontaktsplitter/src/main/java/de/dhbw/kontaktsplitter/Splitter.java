@@ -79,7 +79,7 @@ public class Splitter
         AnredeRepository anredeRepo = AnredeRepository.instance();
         for (String anrede : anredeRepo.getValues())
         {
-            String regex = ".*\\s" + anrede.replaceAll("\\.", "\\\\.") + "\\s.*";
+            String regex = ".*\\b" + anrede.replaceAll("\\.", "\\\\.") + "\\b.*";
             if (input.matches(regex))
             {
                 anredeRepo.getLand(anrede).ifPresent(this::setLand);
@@ -111,7 +111,7 @@ public class Splitter
     {
         for (String namenszusatz : NamenszusatzRepository.instance().getValues())
         {
-            String regex = ".*\\s" + namenszusatz.replaceAll("\\.", "\\\\.") + "\\s.*";
+            String regex = ".*\\b" + namenszusatz.replaceAll("\\.", "\\\\.") + "\\b.*";
             if (input.matches(regex))
             {
                 return Optional.of(namenszusatz);
