@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 import de.dhbw.kontaktsplitter.repository.AnredeRepository;
 import de.dhbw.kontaktsplitter.repository.GrussformelRepository;
@@ -19,6 +20,7 @@ import javafx.collections.FXCollections;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlType(propOrder = { "input", "vorname", "nachname", "anrede", "titel", "geschlecht", "land", "grussformel", "briefanrede" })
 public class Kontakt
 {
     private StringProperty             input       = new SimpleStringProperty();

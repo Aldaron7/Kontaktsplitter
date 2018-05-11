@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.dhbw.kontaktsplitter.Splitter;
@@ -15,7 +16,8 @@ public class TestRecognizeString
 {
     private Splitter splitter = new Splitter();
 
-    // @Test
+    @Test
+    @Ignore
     public void testRecognizeTitelAlgo()
     {
         TitelRepository titelRepo = TitelRepository.instance();
@@ -44,7 +46,8 @@ public class TestRecognizeString
         }
     }
 
-    // @Test
+    @Test
+    @Ignore
     public void testRecognizeNamenszusatzAlgo()
     {
         NamenszusatzRepository instance = NamenszusatzRepository.instance();
