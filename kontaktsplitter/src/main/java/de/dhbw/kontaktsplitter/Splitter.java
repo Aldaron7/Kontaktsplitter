@@ -41,17 +41,17 @@ public class Splitter
         return kontakt;
     }
 
-    private boolean validateInput(String input)
+    public boolean validateInput(String input)
     {
         // TODO
         return true;
     }
 
-    private List<String> recognizeTitel(String input)
+    public List<String> recognizeTitel(String input)
     {
         List<String> titelListe = new ArrayList<>();
         TitelRepository titelRepo = TitelRepository.instance();
-        Iterator<String> iterator = titelRepo.getValues().stream().distinct().sorted((s1, s2) -> s2.compareTo(s1)).iterator();
+        Iterator<String> iterator = titelRepo.getValues().iterator();
         StringBuilder regex = new StringBuilder("(");
         while (iterator.hasNext())
         {
@@ -74,12 +74,13 @@ public class Splitter
         return titelListe;
     }
 
-    private Optional<String> recognizeAnrede(String input)
+    public Optional<String> recognizeAnrede(String input)
     {
         AnredeRepository anredeRepo = AnredeRepository.instance();
         for (String anrede : anredeRepo.getValues())
         {
-            if (input.contains(anrede))
+            String regex = ".*\\s" + anrede.replaceAll("\\.", "\\\\.") + "\\s.*";
+            if (input.matches(regex))
             {
                 anredeRepo.getLand(anrede).ifPresent(this::setLand);
                 anredeRepo.getGeschlecht(anrede).ifPresent(this::setGeschlecht);
@@ -89,7 +90,7 @@ public class Splitter
         return Optional.empty();
     }
 
-    private Optional<String> recognizeVorname(String input)
+    public Optional<String> recognizeVorname(String input)
     {
         input = this.removeAllAnreden(input).trim();
         input = this.removeAllTitel(input).trim();
@@ -106,11 +107,12 @@ public class Splitter
         return Optional.of(sb.toString().trim());
     }
 
-    private Optional<String> recognizeNamenszusatz(String input)
+    public Optional<String> recognizeNamenszusatz(String input)
     {
         for (String namenszusatz : NamenszusatzRepository.instance().getValues())
         {
-            if (input.contains(namenszusatz))
+            String regex = ".*\\s" + namenszusatz.replaceAll("\\.", "\\\\.") + "\\s.*";
+            if (input.matches(regex))
             {
                 return Optional.of(namenszusatz);
             }
@@ -118,7 +120,7 @@ public class Splitter
         return Optional.empty();
     }
 
-    private Optional<String> recognizeNachname(String input)
+    public Optional<String> recognizeNachname(String input)
     {
         StringBuilder sb = new StringBuilder();
         this.recognizeNamenszusatz(input).ifPresent(nz -> sb.append(nz).append(" "));
@@ -129,7 +131,7 @@ public class Splitter
         return Optional.of(sb.toString());
     }
 
-    private String removeAllTitel(String input)
+    public String removeAllTitel(String input)
     {
         Collection<String> titel = TitelRepository.instance().getValues();
         for (String t : titel)
@@ -139,7 +141,7 @@ public class Splitter
         return input;
     }
 
-    private String removeAllAnreden(String input)
+    public String removeAllAnreden(String input)
     {
         Collection<String> anreden = AnredeRepository.instance().getValues();
         for (String anrede : anreden)

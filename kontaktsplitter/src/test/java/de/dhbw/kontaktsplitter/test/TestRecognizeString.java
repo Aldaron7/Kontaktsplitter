@@ -64,14 +64,15 @@ public class TestRecognizeString
             Matcher matcher = pattern.matcher(input);
             while (matcher.find())
             {
-                System.out.print(matcher.group() + " ");
+                System.out.print("regex: " + matcher.group() + " ");
             }
             System.out.println();
             for (String namenszusatz : NamenszusatzRepository.instance().getValues())
             {
-                if (input.contains(namenszusatz))
+                String regex1 = ".*\\s" + namenszusatz.replaceAll("\\.", "\\\\.") + "\\s.*";
+                if (input.matches(regex1))
                 {
-                    System.out.println(namenszusatz);
+                    System.out.println("regex1: " + namenszusatz);
                 }
             }
         }
