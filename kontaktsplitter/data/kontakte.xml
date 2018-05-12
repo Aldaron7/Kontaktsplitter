@@ -151,4 +151,24 @@
         <grussformel>Sehr geehrte</grussformel>
         <briefanrede>Sehr geehrte Damen und Herren</briefanrede>
     </kontakt>
+    <kontakt>
+        <input>Herr V Aa</input>
+        <vorname>V</vorname>
+        <nachname>Aa</nachname>
+        <anrede>Herr</anrede>
+        <geschlecht>MALE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrter</grussformel>
+        <briefanrede>Sehr geehrter Herr</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Herr V Aaa</input>
+        <vorname>V</vorname>
+        <nachname>Aaa</nachname>
+        <anrede>Herr</anrede>
+        <geschlecht>MALE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrter</grussformel>
+        <briefanrede>Sehr geehrter Herr</briefanrede>
+    </kontakt>
 </kontakte>

@@ -56,6 +56,12 @@ public class RootController
         this.geschlecht.getSelectionModel().selectedItemProperty().addListener(this.regenerateKontaktdaten);
         this.landkennung.getItems().setAll(Land.values());
         this.landkennung.getSelectionModel().selectedItemProperty().addListener(this.regenerateKontaktdaten);
+        this.eingabe.focusedProperty().addListener((ob, o, n) -> {
+            if (n == false)
+            {
+                this.handleSplitten();
+            }
+        });
     }
 
     @FXML

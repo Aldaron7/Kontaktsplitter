@@ -31,11 +31,13 @@
             <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
+            <Label focusTraversable="false" style="-fx-font-weight: bold;" text="Eingabe" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="eingabe" onAction="#handleSplitten" prefHeight="50.0" prefWidth="200.0" promptText="Eingabe" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </TextField>
+            <Button mnemonicParsing="false" onAction="#handleSplitten" text="Splitten" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
             <GridPane hgap="5.0" maxWidth="500.0" minWidth="500.0" prefWidth="500.0" vgap="5.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -53,37 +55,13 @@
                   <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="anrede" editable="false" prefHeight="50.0" prefWidth="200.0" promptText="Anrede" GridPane.columnIndex="1">
+                  <Label focusTraversable="false" text="Anrede" />
+                  <TextField fx:id="anrede" editable="false" focusTraversable="false" prefHeight="50.0" prefWidth="200.0" promptText="Anrede" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </GridPane.margin>
                   </TextField>
-                  <Label text="Anrede" />
-                  <TextField fx:id="vorname" onAction="#handleKorrektur" prefHeight="50.0" prefWidth="200.0" promptText="Vorname" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <TextField fx:id="nachname" onAction="#handleKorrektur" prefHeight="50.0" prefWidth="200.0" promptText="Nachname" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                  </TextField>
-                  <Label layoutX="10.0" layoutY="25.0" text="Titel" GridPane.rowIndex="1" />
-                  <Label layoutX="10.0" layoutY="80.0" text="Vorname" GridPane.rowIndex="2" />
-                  <Label layoutX="10.0" layoutY="135.0" text="Nachname" GridPane.rowIndex="3" />
-                  <Label layoutX="10.0" layoutY="190.0" text="Geschlecht" GridPane.rowIndex="4" />
-                  <Label layoutX="10.0" layoutY="245.0" text="Land" GridPane.rowIndex="5" />
-                  <ChoiceBox fx:id="geschlecht" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                  </ChoiceBox>
-                  <ChoiceBox fx:id="landkennung" layoutX="285.0" layoutY="245.0" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
-                     <GridPane.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </GridPane.margin>
-                  </ChoiceBox>
+                  <Label focusTraversable="false" layoutX="10.0" layoutY="25.0" text="Titel" GridPane.rowIndex="1" />
                   <ListView fx:id="titel" orientation="HORIZONTAL" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -97,20 +75,42 @@
                         </ContextMenu>
                      </contextMenu>
                   </ListView>
+                  <Label focusTraversable="false" layoutX="10.0" layoutY="80.0" text="Vorname" GridPane.rowIndex="2" />
+                  <TextField fx:id="vorname" onAction="#handleKorrektur" prefHeight="50.0" prefWidth="200.0" promptText="Vorname" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label focusTraversable="false" layoutX="10.0" layoutY="135.0" text="Nachname" GridPane.rowIndex="3" />
+                  <TextField fx:id="nachname" onAction="#handleKorrektur" prefHeight="50.0" prefWidth="200.0" promptText="Nachname" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label focusTraversable="false" layoutX="10.0" layoutY="190.0" text="Geschlecht" GridPane.rowIndex="4" />
+                  <ChoiceBox fx:id="geschlecht" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </ChoiceBox>
+                  <Label focusTraversable="false" layoutX="10.0" layoutY="245.0" text="Land" GridPane.rowIndex="5" />
+                  <ChoiceBox fx:id="landkennung" layoutX="285.0" layoutY="245.0" prefHeight="50.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </ChoiceBox>
                </children>
                <padding>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </padding>
             </GridPane>
+            <Label focusTraversable="false" style="-fx-font-weight: bold;" text="Briefanrede" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="briefanrede" onAction="#handleSpeichern" prefHeight="50.0" prefWidth="200.0" promptText="Briefanrede" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </TextField>
           <Button mnemonicParsing="false" onAction="#handleSpeichern" text="Speichern" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" onAction="#handleSplitten" text="Splitten" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <Label style="-fx-font-weight: bold;" text="Eingabe" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label layoutX="180.0" layoutY="193.0" style="-fx-font-weight: bold;" text="Briefanrede" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>
