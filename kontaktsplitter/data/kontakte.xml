@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kontakte>
+    <kontakt>
+        <input>Frau Sandra Berger</input>
+        <vorname>Sandra</vorname>
+        <nachname>Berger</nachname>
+        <anrede>Frau</anrede>
+        <geschlecht>FEMALE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrte</grussformel>
+        <briefanrede>Sehr geehrte Frau Sandra Berger</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Herr Dr. Sandro Gutmensch</input>
+        <vorname>Sandro</vorname>
+        <nachname>Gutmensch</nachname>
+        <anrede>Herr</anrede>
+        <titel>Dr.</titel>
+        <geschlecht>MALE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrter</grussformel>
+        <briefanrede>Sehr geehrter Herr Dr. Sandro Gutmensch</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Professor Heinrich Freiherr vom Wald</input>
+        <vorname>Heinrich Freiherr</vorname>
+        <nachname>vom Wald</nachname>
+        <anrede>Herr</anrede>
+        <titel>Professor</titel>
+        <geschlecht>MALE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrter</grussformel>
+        <briefanrede>Sehr geehrter Herr Professor Heinrich Freiherr vom Wald</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Mrs. Doreen Faber</input>
+        <vorname>Doreen</vorname>
+        <nachname>Faber</nachname>
+        <anrede>Mrs</anrede>
+        <geschlecht>FEMALE</geschlecht>
+        <land>EN</land>
+        <grussformel>Dear</grussformel>
+        <briefanrede>Dear Mrs Doreen Faber</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Mme. Charlotte Noir</input>
+        <vorname>Mme. Charlotte</vorname>
+        <nachname>Noir</nachname>
+        <anrede>Damen und Herren</anrede>
+        <geschlecht>NONE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrte</grussformel>
+        <briefanrede>Sehr geehrte Damen und Herren</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Estobar y Gonzales</input>
+        <vorname>Estobar</vorname>
+        <nachname>Gonzales</nachname>
+        <anrede>Damen und Herren</anrede>
+        <geschlecht>NONE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrte</grussformel>
+        <briefanrede>Sehr geehrte Damen und Herren</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Frau Prof. Dr. rer. nat. Maria von Leuthäuser-Schnarrenberger</input>
+        <vorname>Maria</vorname>
+        <nachname>von Leuthäuser-Schnarrenberger</nachname>
+        <anrede>Frau</anrede>
+        <titel>Prof.</titel>
+        <titel>Dr. rer. nat.</titel>
+        <geschlecht>FEMALE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrte</grussformel>
+        <briefanrede>Sehr geehrte Frau Prof. Dr. rer. nat. Maria von Leuthäuser-Schnarrenberger</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Herr Dipl. Ing. Max von Müller</input>
+        <vorname>Max</vorname>
+        <nachname>von Müller</nachname>
+        <anrede>Herr</anrede>
+        <titel>Dipl. Ing.</titel>
+        <geschlecht>MALE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrter</grussformel>
+        <briefanrede>Sehr geehrter Herr Dipl. Ing. Max von Müller</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Dr. Russwurm, Winfried</input>
+        <vorname>Russwurm,</vorname>
+        <nachname>Winfried</nachname>
+        <anrede>Damen und Herren</anrede>
+        <titel>Dr.</titel>
+        <geschlecht>NONE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrte</grussformel>
+        <briefanrede>Sehr geehrte Damen und Herren</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Herr Dr.-Ing. Dr. rer. nat. Dr. h.c. mult. Paul Steffens</input>
+        <vorname>Paul</vorname>
+        <nachname>Steffens</nachname>
+        <anrede>Herr</anrede>
+        <titel>Dr.</titel>
+        <titel>Dr. rer. nat.</titel>
+        <titel>Dr. h.c.</titel>
+        <geschlecht>MALE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrter</grussformel>
+        <briefanrede>Sehr geehrter Herr Dr. Dr. rer. nat. Dr. h.c. Paul Steffens</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Prof. Dr. Olaf Herden</input>
+        <vorname>Olaf</vorname>
+        <nachname>Herden</nachname>
+        <anrede>Damen und Herren</anrede>
+        <titel>Prof.</titel>
+        <titel>Dr.</titel>
+        <geschlecht>NONE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrte</grussformel>
+        <briefanrede>Sehr geehrte Damen und Herren</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Frau Luise Herrmann</input>
+        <vorname>Luise</vorname>
+        <nachname>Herrmann</nachname>
+        <anrede>Frau</anrede>
+        <geschlecht>FEMALE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrte</grussformel>
+        <briefanrede>Sehr geehrte Frau Luise Herrmann</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>van Gogh</input>
+        <vorname></vorname>
+        <nachname>van Gogh</nachname>
+        <anrede>Damen und Herren</anrede>
+        <geschlecht>NONE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrte</grussformel>
+        <briefanrede>Sehr geehrte Damen und Herren</briefanrede>
+    </kontakt>
+    <kontakt>
+        <input>Baba O'Riley</input>
+        <vorname>Baba</vorname>
+        <nachname>O'Riley</nachname>
+        <anrede>Damen und Herren</anrede>
+        <geschlecht>NONE</geschlecht>
+        <land>DE</land>
+        <grussformel>Sehr geehrte</grussformel>
+        <briefanrede>Sehr geehrte Damen und Herren</briefanrede>
+    </kontakt>
+</kontakte>

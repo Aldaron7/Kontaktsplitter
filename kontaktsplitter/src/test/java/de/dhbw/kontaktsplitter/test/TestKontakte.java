@@ -1,13 +1,11 @@
 package de.dhbw.kontaktsplitter.test;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import de.dhbw.kontaktsplitter.Splitter;
 import de.dhbw.kontaktsplitter.model.Kontakt;
 import de.dhbw.kontaktsplitter.model.Kontakte;
 
-@Ignore
 public class TestKontakte
 {
     @Test
