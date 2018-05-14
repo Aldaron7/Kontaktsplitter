@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,16 +16,31 @@ import de.dhbw.kontaktsplitter.repository.AnredeRepository;
 import de.dhbw.kontaktsplitter.repository.NamenszusatzRepository;
 import de.dhbw.kontaktsplitter.repository.TitelRepository;
 
+/**
+ * @author mvr Splittet einen Eingabestring in die Bestandteile eines Kontaktes
+ *
+ */
 public class Splitter
 {
     private Land       land;
     private Geschlecht geschlecht;
 
-    public Kontakt split(String input)
+    /**
+     * Splitted den Eingabestring falls moeglich in Anrede, Titel, Vorname und Nachname. Erkennt falls moeglich das
+     * Geschlecht und das Land aus den Daten und generiert die Grussformel und die Briefanrede.
+     * 
+     * @param input
+     *            Eingabestring
+     * @param onFail
+     *            Consumer fuer die Fehlermeldung
+     * @return Einen neuen Kontakt, generiert aus dem Eingabestring
+     */
+    public Kontakt split(String input, Consumer<String> onFail)
     {
+        StringBuilder sbErrorMessage = new StringBuilder();
         Kontakt kontakt = new Kontakt();
         kontakt.setInput(input);
-        if (this.validateInput(input))
+        if (this.validateInput(input, sbErrorMessage::append))
         {
             kontakt.setTitel(this.recognizeTitel(input));
             this.recognizeAnrede(input).ifPresent(kontakt::setAnrede);
@@ -33,20 +49,43 @@ public class Splitter
 
             kontakt.setGeschlecht(this.geschlecht);
             kontakt.setLand(this.land);
-            kontakt.generateBriefanrede();
+            kontakt.generateBriefanrede(sbErrorMessage::append);
 
             this.geschlecht = null;
             this.land = null;
         }
+        if (sbErrorMessage.length() > 0)
+        {
+            onFail.accept(sbErrorMessage.toString());
+        }
         return kontakt;
     }
 
-    public boolean validateInput(String input)
+    /**
+     * Validiert den Eingabestring
+     * 
+     * @param input
+     *            Eingabestring
+     * @param onFail
+     *            Consumer fuer die Fehlermeldungen
+     * @return true, wenn der Eingabestring valide ist
+     */
+    public boolean validateInput(String input, Consumer<String> onFail)
     {
-        // TODO
+        if (input == null || input.length() == 0)
+        {
+            return false;
+        }
         return true;
     }
 
+    /**
+     * Erkennt die im Eingabestring vorkommenden Titel durch vergleich mit den persistierten Titeln.
+     * 
+     * @param input
+     *            Eingabestring
+     * @return Eine Liste aus den erkannten Titeln
+     */
     public List<String> recognizeTitel(String input)
     {
         List<String> titelListe = new ArrayList<>();
@@ -74,6 +113,13 @@ public class Splitter
         return titelListe;
     }
 
+    /**
+     * Erkennt die Anrede aus dem Eingabestring falls moeglich
+     * 
+     * @param input
+     *            Eingabestring
+     * @return Optional mit der Anrede, falls diese erkannt werden konnte, ansonsten einen leeren Optinal
+     */
     public Optional<String> recognizeAnrede(String input)
     {
         AnredeRepository anredeRepo = AnredeRepository.instance();
@@ -90,6 +136,13 @@ public class Splitter
         return Optional.empty();
     }
 
+    /**
+     * Erkennt den Vornamen aus dem Eingabestring falls moeglich
+     * 
+     * @param input
+     *            Eingabestring
+     * @return Optional mit dem erkannten Vornamen
+     */
     public Optional<String> recognizeVorname(String input)
     {
         input = this.removeAllAnreden(input).trim();
@@ -107,6 +160,14 @@ public class Splitter
         return Optional.of(sb.toString().trim());
     }
 
+    /**
+     * Erkennt den Namenszusatz aus dem Eingabestring, falls dieser im Eingabestring und in den persisterten
+     * Namenszusaetzen vorhanden ist.
+     * 
+     * @param input
+     *            Eingabestring
+     * @return Optional mit dem Namenszusatz, falls dieser erkannt wurd, ansonsten ein leeres Optional
+     */
     public Optional<String> recognizeNamenszusatz(String input)
     {
         for (String namenszusatz : NamenszusatzRepository.instance().getValues())
@@ -120,6 +181,13 @@ public class Splitter
         return Optional.empty();
     }
 
+    /**
+     * Erkennt den Nachnamen aus dem Eingabestring falls moeglich.
+     * 
+     * @param input
+     *            Eingabestring
+     * @return Optional mit dem erkannten Nachnamen
+     */
     public Optional<String> recognizeNachname(String input)
     {
         StringBuilder sb = new StringBuilder();
@@ -131,6 +199,13 @@ public class Splitter
         return Optional.of(sb.toString());
     }
 
+    /**
+     * Entfernt alle bekannten Titel aus dem Eingabestring
+     * 
+     * @param input
+     *            Eingabestring
+     * @return Eingabestring ohne erkannte Titel
+     */
     public String removeAllTitel(String input)
     {
         Collection<String> titel = TitelRepository.instance().getValues();
@@ -141,6 +216,13 @@ public class Splitter
         return input;
     }
 
+    /**
+     * Entfernt alle bekannten Anreden aus dem Eingabestring.
+     * 
+     * @param input
+     *            Eingabestring
+     * @return Eingabestring ohne die erkannten Anreden
+     */
     public String removeAllAnreden(String input)
     {
         Collection<String> anreden = AnredeRepository.instance().getValues();

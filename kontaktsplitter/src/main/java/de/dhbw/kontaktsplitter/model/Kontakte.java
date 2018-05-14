@@ -39,6 +39,13 @@ public class Kontakte
         this.kontakte = kontakte;
     }
 
+    /**
+     * Fuegt einen Kontakt hinzu, falls dieser noch nicht in der Liste ist, andernfalls wird der bestehende Kontakt
+     * ueberschrieben.
+     * 
+     * @param kontakt
+     *            Kontakt der hinzugefuegt wird
+     */
     public void add(Kontakt kontakt)
     {
         this.kontakte.removeIf(kontakt::equals);
@@ -46,11 +53,20 @@ public class Kontakte
         this.kontakte.add(kontakt);
     }
 
+    /**
+     * Entfernt einen Kontakt aus der Liste.
+     * 
+     * @param kontakt
+     *            Kontakt der entfernt werden soll.
+     */
     public void remove(Kontakt kontakt)
     {
         this.kontakte.remove(kontakt);
     }
 
+    /**
+     * Speichert die Kontakte als xml Datei
+     */
     public void save()
     {
         try (BufferedWriter writer = Files.newBufferedWriter(Pfade.KONTAKTE))
@@ -66,6 +82,9 @@ public class Kontakte
         }
     }
 
+    /**
+     * Laedt die Kontakte aus einer xml Datei
+     */
     public void load()
     {
         if (Files.exists(Pfade.KONTAKTE))

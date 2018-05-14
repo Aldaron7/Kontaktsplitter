@@ -25,6 +25,10 @@ import de.dhbw.kontaktsplitter.model.Titel;
 import de.dhbw.kontaktsplitter.model.interfaces.IRepository;
 import de.dhbw.kontaktsplitter.util.Pfade;
 
+/**
+ * @author mvr Regelt den Zugriff auf die persistierten Titel
+ *
+ */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class TitelRepository implements IRepository<Titel>
@@ -47,6 +51,9 @@ public class TitelRepository implements IRepository<Titel>
     {
     }
 
+    /**
+     * Laedt die Titel aus einer xml Datei
+     */
     public void load()
     {
         try (BufferedReader reader = Files.newBufferedReader(Pfade.TITEL))
@@ -62,6 +69,9 @@ public class TitelRepository implements IRepository<Titel>
         }
     }
 
+    /**
+     * Speichert die Titel in einer xml Datei
+     */
     public void save()
     {
         try (BufferedWriter writer = Files.newBufferedWriter(Pfade.TITEL))
@@ -103,13 +113,10 @@ public class TitelRepository implements IRepository<Titel>
         return this.getData().stream().map(Titel::getValue).anyMatch(value::equals);
     }
 
-    // public Optional<List<Kennung>> getKennung(String value)
-    // {
-    // List<Kennung> kennungen = this.getData().stream().filter(t ->
-    // t.getValue().equals(value)).map(Titel::getKennung).filter(k -> k != null)
-    // .collect(Collectors.toList());
-    // return kennungen.isEmpty() ? Optional.empty() : Optional.of(kennungen);
-    // }
+    public boolean contains(Titel titel)
+    {
+        return this.getData().contains(titel);
+    }
 
     @Override
     public Optional<Land> getLand(String value)

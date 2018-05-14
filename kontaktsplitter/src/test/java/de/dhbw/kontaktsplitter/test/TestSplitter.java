@@ -14,7 +14,7 @@ public class TestSplitter
     {
         for (String input : Cons.NAMES)
         {
-            Kontakt kontakt = this.splitter.split(input);
+            Kontakt kontakt = this.splitter.split(input, System.out::println);
             System.out.println(kontakt);
         }
     }

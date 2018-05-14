@@ -69,8 +69,9 @@
                      <contextMenu>
                         <ContextMenu>
                           <items>
-                            <MenuItem mnemonicParsing="false" onAction="#handleTitelToLeft" text="&lt;-" />
-                              <MenuItem mnemonicParsing="false" onAction="#handleTitelToRight" text="-&gt;" />
+                            <MenuItem mnemonicParsing="false" onAction="#handleTitelToLeft" text=" &lt;--" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleTitelToRight" text=" --&gt;" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleAddTitel" text="Neu" />
                           </items>
                         </ContextMenu>
                      </contextMenu>

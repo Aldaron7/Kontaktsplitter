@@ -2,6 +2,7 @@ package de.dhbw.kontaktsplitter.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -44,9 +45,10 @@ public class Kontakt
         this.titel.set(FXCollections.observableArrayList(new ArrayList<>()));
     }
 
-    public void generateBriefanrede()
+    public void generateBriefanrede(Consumer<String> onFail)
     {
-        this.setDefaultKennung();
+        StringBuilder sbFail = new StringBuilder();
+        this.setDefaultKennung(sbFail::append);
         if (this.getGrussformel() == null)
         {
             this.generateGrussformel();
@@ -66,9 +68,18 @@ public class Kontakt
                 {
                     sb.append(t).append(" ");
                 }
+                if (!"".equals(this.getVorname()))
+                {
+                    sb.append(this.getVorname()).append(" ");
+                }
+                sb.append(this.getNachname());
             }
         }
         this.setBriefanrede(sb.toString().trim());
+        if (sbFail.length() > 0)
+        {
+            onFail.accept(sbFail.toString());
+        }
     }
 
     public void generateAnrede()
@@ -81,10 +92,23 @@ public class Kontakt
         GrussformelRepository.instance().getValue(this.getLand(), this.getGeschlecht()).ifPresent(this::setGrussformel);
     }
 
-    private void setDefaultKennung()
+    private void setDefaultKennung(Consumer<String> onFail)
     {
-        this.setLand(this.getLand() == null ? Land.DE : this.getLand());
-        this.setGeschlecht(this.getGeschlecht() == null ? Geschlecht.NONE : this.getGeschlecht());
+        StringBuilder sb = new StringBuilder();
+        if (this.getLand() == null)
+        {
+            sb.append("Land konnte nicht erkannt werden. Default DE wird gesetzt.\n");
+            this.setLand(Land.DE);
+        }
+        if (this.getGeschlecht() == null)
+        {
+            sb.append("Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.\n");
+            this.setGeschlecht(Geschlecht.NONE);
+        }
+        if (sb.length() > 0)
+        {
+            onFail.accept(sb.toString());
+        }
     }
 
     public StringProperty inputProperty()

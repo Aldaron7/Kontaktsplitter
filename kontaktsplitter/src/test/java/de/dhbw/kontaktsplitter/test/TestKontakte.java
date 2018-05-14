@@ -17,7 +17,7 @@ public class TestKontakte
         Kontakte kontakte = new Kontakte();
         for (String input : Cons.NAMES)
         {
-            Kontakt kontakt = splitter.split(input);
+            Kontakt kontakt = splitter.split(input, System.out::println);
             System.out.println(kontakt);
             kontakte.add(kontakt);
         }
