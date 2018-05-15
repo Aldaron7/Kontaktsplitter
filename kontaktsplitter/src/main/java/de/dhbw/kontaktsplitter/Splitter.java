@@ -76,6 +76,15 @@ public class Splitter
         {
             return false;
         }
+        if (input.matches(".*\\d.*"))
+        {
+            onFail.accept("Es sind keine Ziffern erlaubt.\n");
+            return false;
+        }
+        if (input.matches(".*,.*"))
+        {
+            onFail.accept("Mit Komma separierte Namen werden evtl. nicht korrekt erkannt.\n");
+        }
         return true;
     }
 

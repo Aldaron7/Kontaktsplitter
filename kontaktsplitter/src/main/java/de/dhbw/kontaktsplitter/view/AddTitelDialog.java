@@ -43,10 +43,6 @@ public class AddTitelDialog extends Dialog<Titel>
 
             Button okButton = (Button) dialogPane.lookupButton(ButtonType.OK);
             okButton.setDisable(true);
-            okButton.setText("Speichern");
-
-            Button cancelButton = (Button) dialogPane.lookupButton(ButtonType.CANCEL);
-            cancelButton.setText("Abbrechen");
 
             titel.textProperty().addListener((obs, o, n) -> okButton.setDisable(n.trim().isEmpty()));
 

@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 
 import de.dhbw.kontaktsplitter.Splitter;
 import de.dhbw.kontaktsplitter.model.Geschlecht;
+import de.dhbw.kontaktsplitter.model.Kennung;
 import de.dhbw.kontaktsplitter.model.Kontakt;
 import de.dhbw.kontaktsplitter.model.Kontakte;
 import de.dhbw.kontaktsplitter.model.Land;
@@ -20,7 +21,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldListCell;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Window;
@@ -43,6 +46,10 @@ public class RootController
     private ChoiceBox<Land>                landkennung;
     @FXML
     private TextField                      briefanrede;
+    @FXML
+    private MenuItem                       titelleft;
+    @FXML
+    private MenuItem                       titelright;
 
     private Window                         owner;
     private Kontakt                        kontakt;
@@ -75,10 +82,20 @@ public class RootController
     {
         this.kontakt = new Kontakt();
         this.bind(this.kontakt);
+
         this.geschlecht.getItems().setAll(Geschlecht.values());
         this.geschlecht.getSelectionModel().selectedItemProperty().addListener(this.regenerateKontaktdaten);
         this.landkennung.getItems().setAll(Land.values());
         this.landkennung.getSelectionModel().selectedItemProperty().addListener(this.regenerateKontaktdaten);
+        this.titel.setCellFactory(TextFieldListCell.forListView());
+        this.titel.setOnEditCommit(event -> {
+            event.getSource().getItems().set(event.getIndex(), event.getNewValue());
+            this.handleKorrektur();
+        });
+        this.titel.getSelectionModel().selectedItemProperty().addListener((obs, o, n) -> {
+            this.titelleft.setVisible(n != null);
+            this.titelright.setVisible(n != null);
+        });
 
         this.eingabe.setOnKeyPressed(this.splittenListener);
         this.vorname.setOnKeyPressed(this.korrekturListener);
@@ -127,37 +144,6 @@ public class RootController
     }
 
     @FXML
-    private void handleSpeichern()
-    {
-        StringBuilder sb = new StringBuilder();
-        if (this.validateKontakt(sb::append))
-        {
-            this.saveKontakt();
-        }
-        else
-        {
-            sb.append("Trotzdem Speichern?");
-            Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setContentText(sb.toString());
-            alert.initOwner(this.owner);
-            alert.showAndWait().ifPresent(result -> {
-                if (result == ButtonType.OK)
-                {
-                    this.saveKontakt();
-                }
-            });
-        }
-    }
-
-    private void saveKontakt()
-    {
-        Kontakte kontakte = new Kontakte();
-        kontakte.load();
-        kontakte.add(this.kontakt);
-        kontakte.save();
-    }
-
-    @FXML
     private void handleAddTitel()
     {
         TitelRepository titelRepo = TitelRepository.instance();
@@ -173,11 +159,67 @@ public class RootController
                 titelRepo.add(titel);
                 titelRepo.save();
             }
+            this.titel.getItems().add(titel.getValue());
+        }
+    }
+
+    @FXML
+    private void handleRemoveTitel()
+    {
+        String selectedTitel = this.titel.getSelectionModel().getSelectedItem();
+        this.titel.getItems().remove(selectedTitel);
+        this.handleKorrektur();
+    }
+
+    @FXML
+    private void handleSpeichern()
+    {
+        StringBuilder sb = new StringBuilder();
+        if (this.validateKontakt(sb::append))
+        {
+            this.saveKontakt();
+        }
+        else
+        {
+            if (this.kontakt.getNachname() == null || this.kontakt.getNachname().equals(""))
+            {
+                this.handleError("Ohne Nachnamen kann der Kontakt nicht gespeichert werden.");
+            }
             else
             {
-                this.handleError("Der Titel " + titel + " ist bereits vorhanden.");
+                sb.append("Trotzdem Speichern?");
+                Alert alert = new Alert(AlertType.CONFIRMATION);
+                alert.setContentText(sb.toString());
+                alert.initOwner(this.owner);
+                alert.showAndWait().ifPresent(result -> {
+                    if (result == ButtonType.OK)
+                    {
+                        this.saveKontakt();
+                    }
+                });
             }
         }
+    }
+
+    private void saveKontakt()
+    {
+        Kontakte kontakte = new Kontakte();
+        kontakte.load();
+        kontakte.add(this.kontakt);
+        this.saveNewTitel();
+        kontakte.save();
+    }
+
+    private void saveNewTitel()
+    {
+        TitelRepository titelRepo = TitelRepository.instance();
+        this.kontakt.getTitel().forEach(t -> {
+            if (!titelRepo.contains(t))
+            {
+                titelRepo.add(new Titel(new Kennung(this.kontakt.getLand(), this.kontakt.getGeschlecht()), t));
+                titelRepo.save();
+            }
+        });
     }
 
     private void handleError(String message)
