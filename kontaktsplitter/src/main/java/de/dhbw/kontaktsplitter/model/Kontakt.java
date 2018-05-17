@@ -68,10 +68,10 @@ public class Kontakt
                 {
                     sb.append(t).append(" ");
                 }
-                if (!"".equals(this.getVorname()))
-                {
-                    sb.append(this.getVorname()).append(" ");
-                }
+                // if (!"".equals(this.getVorname()))
+                // {
+                // sb.append(this.getVorname()).append(" ");
+                // }
                 sb.append(this.getNachname());
             }
         }
