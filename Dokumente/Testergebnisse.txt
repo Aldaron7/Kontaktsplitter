@@ -1,42 +1,52 @@
--------------------------------------------------------
+﻿-------------------------------------------------------
  T E S T S
 -------------------------------------------------------
 Running de.dhbw.kontaktsplitter.test.TestKontakte
 
 [Kontakt [input=Frau Sandra Berger, vorname=Sandra, nachname=Berger, anrede=Frau, titel=[], geschlecht=FEMALE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Frau Berger], Kontakt [input=Herr Dr. Sandro Gutmensch, vorname=Sandro, nachname=Gutmensch, anrede=Herr, titel=[Dr.], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Dr. Gutmensch], Kontakt [input=Professor Heinrich Freiherr vom Wald, vorname=Heinrich Freiherr, nachname=vom Wald, anrede=Herr, titel=[Professor], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Professor vom Wald], Kontakt [input=Mrs. Doreen Faber, vorname=Doreen, nachname=Faber, anrede=Mrs, titel=[], geschlecht=FEMALE, land=EN, grussformel=Dear, briefanrede=Dear Mrs Faber], Kontakt [input=Mme. Charlotte Noir, vorname=Mme. Charlotte, nachname=Noir, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren], Kontakt [input=Estobar y Gonzales, vorname=Estobar, nachname=Gonzales, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren], Kontakt [input=Frau Prof. Dr. rer. nat. Maria von Leuthäuser-Schnarrenberger, vorname=Maria, nachname=von Leuthäuser-Schnarrenberger, anrede=Frau, titel=[Prof., Dr. rer. nat.], geschlecht=FEMALE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Frau Prof. Dr. rer. nat. von Leuthäuser-Schnarrenberger], Kontakt [input=Herr Dipl. Ing. Max von Müller, vorname=Max, nachname=von Müller, anrede=Herr, titel=[Dipl. Ing.], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Dipl. Ing. von Müller], Kontakt [input=Dr. Russwurm, Winfried, vorname=Russwurm,, nachname=Winfried, anrede=Damen und Herren, titel=[Dr.], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren], Kontakt [input=Herr Dr.-Ing. Dr. rer. nat. Dr. h.c. mult. Paul Steffens, vorname=Paul, nachname=Steffens, anrede=Herr, titel=[Dr., Dr. rer. nat., Dr. h.c.], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Dr. Dr. rer. nat. Dr. h.c. Steffens], Kontakt [input=Prof. Dr. Olaf Herden, vorname=Olaf, nachname=Herden, anrede=Damen und Herren, titel=[Prof., Dr.], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren], Kontakt [input=Frau Luise Herrmann, vorname=Luise, nachname=Herrmann, anrede=Frau, titel=[], geschlecht=FEMALE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Frau Herrmann], Kontakt [input=van Gogh, vorname=, nachname=van Gogh, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren], Kontakt [input=Baba O'Riley, vorname=Baba, nachname=O'Riley, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]]
+
 Kontakt [input=Frau Sandra Berger, vorname=Sandra, nachname=Berger, anrede=Frau, titel=[], geschlecht=FEMALE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Frau Berger]
+
 Kontakt [input=Herr Dr. Sandro Gutmensch, vorname=Sandro, nachname=Gutmensch, anrede=Herr, titel=[Dr.], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Dr. Gutmensch]
+
 Kontakt [input=Professor Heinrich Freiherr vom Wald, vorname=Heinrich Freiherr, nachname=vom Wald, anrede=Herr, titel=[Professor], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Professor vom Wald]
+
 Kontakt [input=Mrs. Doreen Faber, vorname=Doreen, nachname=Faber, anrede=Mrs, titel=[], geschlecht=FEMALE, land=EN, grussformel=Dear, briefanrede=Dear Mrs Faber]
+
 Land konnte nicht erkannt werden. Default DE wird gesetzt.
 Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
-
 Kontakt [input=Mme. Charlotte Noir, vorname=Mme. Charlotte, nachname=Noir, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
+
 Land konnte nicht erkannt werden. Default DE wird gesetzt.
 Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
-
 Kontakt [input=Estobar y Gonzales, vorname=Estobar, nachname=Gonzales, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
+
 Kontakt [input=Frau Prof. Dr. rer. nat. Maria von Leuthäuser-Schnarrenberger, vorname=Maria, nachname=von Leuthäuser-Schnarrenberger, anrede=Frau, titel=[Prof., Dr. rer. nat.], geschlecht=FEMALE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Frau Prof. Dr. rer. nat. von Leuthäuser-Schnarrenberger]
+
 Kontakt [input=Herr Dipl. Ing. Max von Müller, vorname=Max, nachname=von Müller, anrede=Herr, titel=[Dipl. Ing.], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Dipl. Ing. von Müller]
+
 Mit Komma separierte Namen werden evtl. nicht korrekt erkannt.
 Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
-
 Kontakt [input=Dr. Russwurm, Winfried, vorname=Russwurm,, nachname=Winfried, anrede=Damen und Herren, titel=[Dr.], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
+
 Kontakt [input=Herr Dr.-Ing. Dr. rer. nat. Dr. h.c. mult. Paul Steffens, vorname=Paul, nachname=Steffens, anrede=Herr, titel=[Dr., Dr. rer. nat., Dr. h.c.], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Dr. Dr. rer. nat. Dr. h.c. Steffens]
-Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
 
+Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
 Kontakt [input=Prof. Dr. Olaf Herden, vorname=Olaf, nachname=Herden, anrede=Damen und Herren, titel=[Prof., Dr.], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
+
 Kontakt [input=Frau Luise Herrmann, vorname=Luise, nachname=Herrmann, anrede=Frau, titel=[], geschlecht=FEMALE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Frau Herrmann]
+
 Land konnte nicht erkannt werden. Default DE wird gesetzt.
 Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
-
 Kontakt [input=van Gogh, vorname=, nachname=van Gogh, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
+
 Land konnte nicht erkannt werden. Default DE wird gesetzt.
 Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
-
 Kontakt [input=Baba O'Riley, vorname=Baba, nachname=O'Riley, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
 
 Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.968 sec
+
+-----
 
 Running de.dhbw.kontaktsplitter.test.TestRecognizeString
 
@@ -69,6 +79,7 @@ input: van Gogh
 result: van Gogh
 input: Baba O'Riley
 result: O'Riley
+
 --RecognizeVorname--
 input: Frau Sandra Berger
 result: Sandra
@@ -98,6 +109,7 @@ input: van Gogh
 result: 
 input: Baba O'Riley
 result: Baba
+
 --RecognizeAnrede--
 input: Frau Sandra Berger
 result: Frau
@@ -127,6 +139,7 @@ input: van Gogh
 result: 
 input: Baba O'Riley
 result: 
+
 --RecognizeNamenszusatz--
 input: Frau Sandra Berger
 result: 
@@ -156,6 +169,7 @@ input: van Gogh
 result: van
 input: Baba O'Riley
 result: 
+
 --RecognizeTitel--
 input: Frau Sandra Berger
 result: []
@@ -189,47 +203,60 @@ result: []
 
 Tests run: 7, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0 sec
 
+-----
+
 Running de.dhbw.kontaktsplitter.test.TestSplitter
 
 Kontakt [input=Frau Sandra Berger, vorname=Sandra, nachname=Berger, anrede=Frau, titel=[], geschlecht=FEMALE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Frau Berger]
+
 Kontakt [input=Herr Dr. Sandro Gutmensch, vorname=Sandro, nachname=Gutmensch, anrede=Herr, titel=[Dr.], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Dr. Gutmensch]
+
 Kontakt [input=Professor Heinrich Freiherr vom Wald, vorname=Heinrich Freiherr, nachname=vom Wald, anrede=Herr, titel=[Professor], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Professor vom Wald]
+
 Kontakt [input=Mrs. Doreen Faber, vorname=Doreen, nachname=Faber, anrede=Mrs, titel=[], geschlecht=FEMALE, land=EN, grussformel=Dear, briefanrede=Dear Mrs Faber]
+
 Land konnte nicht erkannt werden. Default DE wird gesetzt.
 Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
-
 Kontakt [input=Mme. Charlotte Noir, vorname=Mme. Charlotte, nachname=Noir, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
+
 Land konnte nicht erkannt werden. Default DE wird gesetzt.
 Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
-
 Kontakt [input=Estobar y Gonzales, vorname=Estobar, nachname=Gonzales, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
+
 Kontakt [input=Frau Prof. Dr. rer. nat. Maria von Leuthäuser-Schnarrenberger, vorname=Maria, nachname=von Leuthäuser-Schnarrenberger, anrede=Frau, titel=[Prof., Dr. rer. nat.], geschlecht=FEMALE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Frau Prof. Dr. rer. nat. von Leuthäuser-Schnarrenberger]
+
 Kontakt [input=Herr Dipl. Ing. Max von Müller, vorname=Max, nachname=von Müller, anrede=Herr, titel=[Dipl. Ing.], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Dipl. Ing. von Müller]
+
 Mit Komma separierte Namen werden evtl. nicht korrekt erkannt.
 Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
-
 Kontakt [input=Dr. Russwurm, Winfried, vorname=Russwurm,, nachname=Winfried, anrede=Damen und Herren, titel=[Dr.], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
+
 Kontakt [input=Herr Dr.-Ing. Dr. rer. nat. Dr. h.c. mult. Paul Steffens, vorname=Paul, nachname=Steffens, anrede=Herr, titel=[Dr., Dr. rer. nat., Dr. h.c.], geschlecht=MALE, land=DE, grussformel=Sehr geehrter, briefanrede=Sehr geehrter Herr Dr. Dr. rer. nat. Dr. h.c. Steffens]
-Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
 
+Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
 Kontakt [input=Prof. Dr. Olaf Herden, vorname=Olaf, nachname=Herden, anrede=Damen und Herren, titel=[Prof., Dr.], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
+
 Kontakt [input=Frau Luise Herrmann, vorname=Luise, nachname=Herrmann, anrede=Frau, titel=[], geschlecht=FEMALE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Frau Herrmann]
+
 Land konnte nicht erkannt werden. Default DE wird gesetzt.
 Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
-
 Kontakt [input=van Gogh, vorname=, nachname=van Gogh, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
+
 Land konnte nicht erkannt werden. Default DE wird gesetzt.
 Geschlecht konnte nicht erkannt werden. Default NONE wird gesetzt.
-
 Kontakt [input=Baba O'Riley, vorname=Baba, nachname=O'Riley, anrede=Damen und Herren, titel=[], geschlecht=NONE, land=DE, grussformel=Sehr geehrte, briefanrede=Sehr geehrte Damen und Herren]
 
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+
+-----
 
 Running de.dhbw.kontaktsplitter.test.TestTitelRepository
 
 [DE_null[Dr.], DE_null[Dr. h.c.], DE_null[Dr. rer. nat.], DE_null[Dipl. Ing.], null_null[Prof.], DE_MALE[Professor], DE_FEMALE[Professorin], EN_null[Ph.D.]]
 
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 sec
+
+-----
 
 Running de.dhbw.kontaktsplitter.test.TestTitelToXml
 
@@ -238,6 +265,8 @@ data\titel.xml
 jaxbContext is=org.eclipse.persistence.jaxb.JAXBContext@564fabc8
 [DE_null[Dr.], DE_null[Dr. h.c.], DE_null[Dr. rer. nat.], DE_null[Dipl. Ing.], null_null[Prof.], DE_MALE[Professor], DE_FEMALE[Professorin], EN_null[Ph.D.]]
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 sec
+
+-----
 
 Results :
 
